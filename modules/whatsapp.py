@@ -8,3 +8,4 @@ def sendmessage(phone,msg):
     width,height = pg.size()
     pg.click(width/2,height/2)
     pg.press('enter')
+    print("Task notified!")

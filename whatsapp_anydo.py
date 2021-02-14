@@ -1,5 +1,6 @@
-from anydo_api.client import Client
-from anydo_api.whatsapp import sendmessage
+from modules.client import Client
+from modules.whatsapp import sendmessage
+from modules.regex import regex
 import schedule, time
 from threading import Thread
 from datetime import datetime
@@ -18,13 +19,15 @@ if __name__ == "__main__":
 
     parse.add_argument('--email',help='Anydo account Email',required=True,action="store")
     parse.add_argument('--passwd',help='Anydo account password',required=True,action="store")
-    parse.add_argument('--phone',help='phone number to notify',required=True,action="store")
+    parse.add_argument('--phone',help='phone number to notify with country code',required=True,action="store")
 
     args = parse.parse_args()
     
     email = args.email
     password = args.passwd
     phone = args.phone
+    
+    regex(email,phone)
     
     user = Client(email=email, password=password)
     tasks = user.get_tasks()
