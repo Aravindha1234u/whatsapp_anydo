@@ -1,0 +1,4 @@
+anydo_api
+webbrowser
+PyAutoGUI
+schedule
